@@ -82,7 +82,7 @@ class Date {
      */
     private function _xml_data() {
         // Loading simplexml data
-        $xml = simplexml_load_file(plugin_dir_path(__FILE__).'data.xml');
+        $xml = simplexml_load_file(plugin_dir_path(__DIR__).'assets/data.xml');
 
         // Parsing data from xml
         foreach($xml->xpath('//suffix/name') as $suffix) array_push($this->set_suffix, (string) $suffix);

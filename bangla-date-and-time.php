@@ -3,7 +3,7 @@
  * Plugin Name: Bangla Date and Time
  * Plugin URI: https://github.com/mhmithu/bangla-date-and-time
  * Description: Bangla Date and Time simply converts all date and time into Bangla.
- * Version: 2.3
+ * Version: 2.4
  * Author: MH Mithu
  * Author URI: http://mithu.me/
  * License: GNU General Public License v3.0
@@ -28,11 +28,14 @@
  */
 
 // Including required file
-require plugin_dir_path(__FILE__).'general-funcs.php';
+require plugin_dir_path(__FILE__).'core.php';
 
 // Hooking into core functions
-add_filter('wp_list_categories', array($date, 'filter_content'));
+add_filter('year_link',          array($date, 'filter_content'));
+add_filter('month_link',         array($date, 'filter_content'));
+add_filter('day_link',           array($date, 'filter_content'));
 add_filter('get_archives_link',  array($date, 'filter_content'));
+add_filter('wp_list_categories', array($date, 'filter_content'));
 add_filter('date_i18n',          array($date, 'set_month_day'), 10, 3);
 add_filter('date_i18n',          array($date, 'bangla_number'), 10, 2);
 add_filter('number_format_i18n', array($date, 'bangla_number'), 10, 1);

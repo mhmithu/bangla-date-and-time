@@ -27,7 +27,7 @@
 
 // Including class
 if (!class_exists('Date_Widget'))
-    require_once plugin_dir_path(__FILE__).'class.Date_Widget.php';
+    require_once plugin_dir_path(__FILE__).'classes/class.Date_Widget.php';
 
 /**
  * Modified get_calendar function for preparing contents

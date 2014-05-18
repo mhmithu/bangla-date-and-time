@@ -43,10 +43,10 @@ class Date_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'bangla_date',
-            'আজকের বাংলা তারিখ',
+            'Bangla Date and Time',
             array(
                 'classname'   => 'bangla_date',
-                'description' => 'A widget to display the relevant dates'
+                'description' => 'Display the relevant dates.'
             )
         );
     }
@@ -79,8 +79,8 @@ class Date_Widget extends WP_Widget {
         $widget .= '<li>';
         $widget .= $date->bn['date'] . $date->bn['suffix'].' ';
         $widget .= $date->bn['month'].', ';
-        $widget .= $date->bn['year'];
-        $widget .= ' বঙ্গাব্দ (' .$date->bn['season']. ')';
+        $widget .= $date->bn['year'] . ' বঙ্গাব্দ';
+        $widget .= !$instance['season'] ? ' (' .$date->bn['season']. ')' : '';
         $widget .= '</li>';
         $widget .= '<li>';
         $widget .= $date->ar['date'] . $date->ar['suffix'].' ';
@@ -88,9 +88,7 @@ class Date_Widget extends WP_Widget {
         $widget .= $date->ar['year'];
         $widget .= ' হিজরী';
         $widget .= '</li>';
-        $widget .= '<li>এখন সময়, ';
-        $widget .= $date->ts['prefix'].' '.$date->ts['time'];
-        $widget .= '</li>';
+        $widget .= !$instance['ctime'] ? '<li>এখন সময়, ' .$date->ts['prefix'].' '.$date->ts['time']. '</li>' : '';
         $widget .= '</ul>';
         $widget .= $after_widget;
 
@@ -106,7 +104,9 @@ class Date_Widget extends WP_Widget {
      */
     public function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        $instance['title'] = strip_tags($new_instance['title']);
+        $instance['title']  = strip_tags($new_instance['title']);
+        $instance['season'] = $new_instance['season'];
+        $instance['ctime']  = $new_instance['ctime'];
         return $instance;
     }
 
@@ -120,7 +120,13 @@ class Date_Widget extends WP_Widget {
 ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Title:'; ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" type="text"  />
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" placeholder="আজকের বাংলা তারিখ" />
+        </p>
+        <p>
+            <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('season'); ?>" name="<?php echo $this->get_field_name('season'); ?>" value="1" <?php if(isset($instance['season'])) checked($instance['season'], 1); ?>  />
+            <label for="<?php echo $this->get_field_id('season'); ?>"><?php echo 'Hide season name'; ?></label><br>
+            <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('ctime'); ?>" name="<?php echo $this->get_field_name('ctime'); ?>" value="1" <?php if(isset($instance['ctime'])) checked($instance['ctime'], 1); ?>  />
+            <label for="<?php echo $this->get_field_id('ctime'); ?>"><?php echo 'Hide current time'; ?></label><br>
         </p>
 <?php
     }

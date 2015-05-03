@@ -46,19 +46,19 @@ Bangla Date and Time is simple but effective to display relevant date, times on 
 
 ## Screenshots ##
 ### 1. Bangla date, comment count and hit count ###
-![1. Bangla date, comment count and hit count](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-1.png)
+![1. Bangla date, comment count and hit count](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-1.jpg)
 
 ### 2. Bangla number into page navigation ###
-![2. Bangla number into page navigation](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-2.png)
+![2. Bangla number into page navigation](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-2.jpg)
 
 ### 3. Bangla date and time widget ###
-![3. Bangla date and time widget](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-3.png)
+![3. Bangla date and time widget](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-3.jpg)
 
 ### 4. Bangla number into dashboard ###
-![4. Bangla number into dashboard](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-4.png)
+![4. Bangla number into dashboard](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-4.jpg)
 
 ### 5. Bangla calendar widget ###
-![5. Bangla calendar widget](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-5.png)
+![5. Bangla calendar widget](https://raw.githubusercontent.com/mhmithu/bangla-date-and-time/master/screenshot-5.jpg)
 
 
 

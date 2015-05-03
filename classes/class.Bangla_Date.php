@@ -8,7 +8,7 @@
  *
  * ----------------------------------------------------------------------
  * Bangla Date and Time - WordPress Plugin
- * Copyright (C) 2014  MH Mithu
+ * Copyright (C) 2015  MH Mithu
  * ----------------------------------------------------------------------
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ class Bangla_Date extends Date {
      */
     public function filter_content($content) {
         $num  = explode(',', $this->data->number);
-        $str  = $this->merged;
+        $str  = (array) $this->merged;
         $data = array_merge($num, $str);
         unset($data['am'], $data['pm']);
 

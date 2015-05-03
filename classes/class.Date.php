@@ -8,7 +8,7 @@
  *
  * ----------------------------------------------------------------------
  * Bangla Date and Time - WordPress Plugin
- * Copyright (C) 2014  MH Mithu
+ * Copyright (C) 2015  MH Mithu
  * ----------------------------------------------------------------------
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -418,7 +418,7 @@ class Date {
     */
     private function hijri(){
         $date = new DateTime;
-        $date->setTimestamp($this->stamp + (6*60*60));
+        $date->setTimestamp($this->stamp+(0*60*60)); // Offset
         // Year, Month, Day
         $y = $date->format('Y');
         $m = $date->format('m');

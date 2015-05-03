@@ -8,7 +8,7 @@
  *
  * ----------------------------------------------------------------------
  * Bangla Date and Time - WordPress Plugin
- * Copyright (C) 2014  MH Mithu
+ * Copyright (C) 2015  MH Mithu
  * ----------------------------------------------------------------------
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ class Date_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'bangla_date',
-            'Bangla Date and Time',
+            'Bangla Date Time',
             array(
                 'classname'   => 'bangla_date',
                 'description' => 'Display the relevant dates.'
@@ -65,32 +65,36 @@ class Date_Widget extends WP_Widget {
         $title = apply_filters('widget_title', $instance['title']);
         $date  = $date->get_date();
 
-        $widget  = $before_widget;
+        $widget  = '<!--Start Date Widget-->';
+        $widget .= $before_widget;
         $widget .= $before_title;
         $widget .= $title ? $title : 'আজকের বাংলা তারিখ';
         $widget .= $after_title;
         $widget .= '<ul>';
-        $widget .= '<li>আজ ';
-        $widget .= $date->ts['weekday'].', ';
+        $widget .= '<li>';
+        $widget .= !$instance['weekday'] ? 'আজ ' . $date->ts['weekday'].', ' : '';
         $widget .= $date->en['date'] . $date->en['suffix'].' ';
         $widget .= $date->en['month'].', ';
         $widget .= $date->en['year'];
+        $widget .= !$instance['suffix'] ? ' ইং' : '';
         $widget .= '</li>';
         $widget .= '<li>';
         $widget .= $date->bn['date'] . $date->bn['suffix'].' ';
         $widget .= $date->bn['month'].', ';
-        $widget .= $date->bn['year'] . ' বঙ্গাব্দ';
+        $widget .= $date->bn['year'];
+        $widget .= !$instance['suffix'] ? ' বঙ্গাব্দ' : '';
         $widget .= !$instance['season'] ? ' (' .$date->bn['season']. ')' : '';
         $widget .= '</li>';
         $widget .= '<li>';
         $widget .= $date->ar['date'] . $date->ar['suffix'].' ';
         $widget .= $date->ar['month'].', ';
         $widget .= $date->ar['year'];
-        $widget .= ' হিজরী';
+        $widget .= !$instance['suffix'] ? ' হিজরী' : '';
         $widget .= '</li>';
         $widget .= !$instance['ctime'] ? '<li>এখন সময়, ' .$date->ts['prefix'].' '.$date->ts['time']. '</li>' : '';
         $widget .= '</ul>';
         $widget .= $after_widget;
+        $widget .= '<!--End Date Widget-->';
 
         echo $widget;
     }
@@ -104,9 +108,11 @@ class Date_Widget extends WP_Widget {
      */
     public function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        $instance['title']  = strip_tags($new_instance['title']);
-        $instance['season'] = $new_instance['season'];
-        $instance['ctime']  = $new_instance['ctime'];
+        $instance['title']   = strip_tags($new_instance['title']);
+        $instance['weekday'] = $new_instance['weekday'];
+        $instance['season']  = $new_instance['season'];
+        $instance['suffix']  = $new_instance['suffix'];
+        $instance['ctime']   = $new_instance['ctime'];
         return $instance;
     }
 
@@ -123,8 +129,15 @@ class Date_Widget extends WP_Widget {
             <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" placeholder="আজকের বাংলা তারিখ" />
         </p>
         <p>
+            <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('weekday'); ?>" name="<?php echo $this->get_field_name('weekday'); ?>" value="1" <?php if(isset($instance['weekday'])) checked($instance['weekday'], 1); ?>  />
+            <label for="<?php echo $this->get_field_id('weekday'); ?>"><?php echo 'Hide weekday name'; ?></label><br>
+
             <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('season'); ?>" name="<?php echo $this->get_field_name('season'); ?>" value="1" <?php if(isset($instance['season'])) checked($instance['season'], 1); ?>  />
             <label for="<?php echo $this->get_field_id('season'); ?>"><?php echo 'Hide season name'; ?></label><br>
+
+            <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('suffix'); ?>" name="<?php echo $this->get_field_name('suffix'); ?>" value="1" <?php if(isset($instance['suffix'])) checked($instance['suffix'], 1); ?>  />
+            <label for="<?php echo $this->get_field_id('suffix'); ?>"><?php echo 'Hide calendar year name'; ?></label><br>
+
             <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('ctime'); ?>" name="<?php echo $this->get_field_name('ctime'); ?>" value="1" <?php if(isset($instance['ctime'])) checked($instance['ctime'], 1); ?>  />
             <label for="<?php echo $this->get_field_id('ctime'); ?>"><?php echo 'Hide current time'; ?></label><br>
         </p>

@@ -153,248 +153,32 @@ class Date {
      */
     private function bongabdo() {
         // Calculating Bongabdo month, date and suffix
-        switch ($this->get_month) {
-            // Months are ordered by sequentially
-            case 1:
-                if ($this->get_date >= 1 && $this->get_date <= 13) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 16;
-                    else $date = $this->get_date + 17;
-                    $month = $this->set_month['bn'][8];
-                } else {
-                    if ($this->get_date == 14 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 16;
-                        $month = $this->set_month['bn'][8];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 14;
-                        else $date = $this->get_date - 13;
-                        $month = $this->set_month['bn'][9];
-                    }
-                }
-                break;
-
-            case 2:
-                if ($this->get_date >= 1 && $this->get_date <= 12) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 17;
-                    else $date = $this->get_date + 18;
-                    $month = $this->set_month['bn'][9];
-                } else {
-                    if ($this->get_date == 13 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 17;
-                        $month = $this->set_month['bn'][9];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 13;
-                        else $date = $this->get_date - 12;
-                        $month = $this->set_month['bn'][10];
-                    }
-                }
-                break;
-
-            case 3:
-                if ($this->get_date >= 1 && $this->get_date <= 14) {
-                    if ($this->get_hour < 6) {
-                        if (!$this->is_leapyear) $date = $this->get_date + 15;
-                        else $date = $this->get_date + 16;
-                        $month = $this->set_month['bn'][10];
-                    } else {
-                        if (!$this->is_leapyear) $date = $this->get_date + 16;
-                        else $date = $this->get_date + 17;
-                        $month = $this->set_month['bn'][10];
-                    }
-                } else {
-                    if ($this->get_date == 15 && $this->get_hour < 6) {
-                        if (!$this->is_leapyear) $date = $this->get_date + 15;
-                        else $date = $this->get_date + 16;
-                        $month = $this->set_month['bn'][10];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 15;
-                        else $date = $this->get_date - 14;
-                        $month = $this->set_month['bn'][11];
-                    }
-                }
-                break;
-
-            case 4:
-                if ($this->get_date >= 1 && $this->get_date <= 13) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 16;
-                    else $date = $this->get_date + 17;
-                    $month = $this->set_month['bn'][11];
-                } else {
-                    if ($this->get_date == 14 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 16;
-                        $month = $this->set_month['bn'][11];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 14;
-                        else $date = $this->get_date - 13;
-                        $month = $this->set_month['bn'][0];
-                    }
-                }
-                break;
-
-            case 5:
-                if ($this->get_date >= 1 && $this->get_date <= 14) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 16;
-                    else $date = $this->get_date + 17;
-                    $month = $this->set_month['bn'][0];
-                } else {
-                    if ($this->get_date == 15 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 16;
-                        $month = $this->set_month['bn'][0];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 15;
-                        else $date = $this->get_date - 14;
-                        $month = $this->set_month['bn'][1];
-                    }
-                }
-                break;
-
-            case 6:
-                if ($this->get_date >= 1 && $this->get_date <= 14) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 16;
-                    else $date = $this->get_date + 17;
-                    $month = $this->set_month['bn'][1];
-                } else {
-                    if ($this->get_date == 15 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 16;
-                        $month = $this->set_month['bn'][1];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 15;
-                        else $date = $this->get_date - 14;
-                        $month = $this->set_month['bn'][2];
-                    }
-                }
-                break;
-
-            case 7:
-                if ($this->get_date >= 1 && $this->get_date <= 15) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 15;
-                    else $date = $this->get_date + 16;
-                    $month = $this->set_month['bn'][2];
-                } else {
-                    if ($this->get_date == 16 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 15;
-                        $month = $this->set_month['bn'][2];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 16;
-                        else $date = $this->get_date - 15;
-                        $month = $this->set_month['bn'][3];
-                    }
-                }
-                break;
-
-            case 8:
-                if ($this->get_date >= 1 && $this->get_date <= 15) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 15;
-                    else $date = $this->get_date + 16;
-                    $month = $this->set_month['bn'][3];
-                } else {
-                    if ($this->get_date == 16 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 15;
-                        $month = $this->set_month['bn'][3];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 16;
-                        else $date = $this->get_date - 15;
-                        $month = $this->set_month['bn'][4];
-                    }
-                }
-                break;
-
-            case 9:
-                if ($this->get_date >= 1 && $this->get_date <= 15) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 15;
-                    else $date = $this->get_date + 16;
-                    $month = $this->set_month['bn'][4];
-                } else {
-                    if ($this->get_date == 16 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 15;
-                        $month = $this->set_month['bn'][4];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 16;
-                        else $date = $this->get_date - 15;
-                        $month = $this->set_month['bn'][5];
-                    }
-                }
-                break;
-
-            case 10:
-                if ($this->get_date >= 1 && $this->get_date <= 15) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 14;
-                    else $date = $this->get_date + 15;
-                    $month = $this->set_month['bn'][5];
-                } else {
-                    if ($this->get_date == 16 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 14;
-                        $month = $this->set_month['bn'][5];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 16;
-                        else $date = $this->get_date - 15;
-                        $month = $this->set_month['bn'][6];
-                    }
-                }
-                break;
-
-            case 11:
-                if ($this->get_date >= 1 && $this->get_date <= 14) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 15;
-                    else $date = $this->get_date + 16;
-                    $month = $this->set_month['bn'][6];
-                } else {
-                    if ($this->get_date == 15 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 15;
-                        $month = $this->set_month['bn'][6];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 15;
-                        else $date = $this->get_date - 14;
-                        $month = $this->set_month['bn'][7];
-                    }
-                }
-                break;
-
-            case 12:
-                if ($this->get_date >= 1 && $this->get_date <= 14) {
-                    if ($this->get_hour < 6) $date = $this->get_date + 15;
-                    else $date = $this->get_date + 16;
-                    $month = $this->set_month['bn'][7];
-                } else {
-                    if ($this->get_date == 15 && $this->get_hour < 6) {
-                        $date  = $this->get_date + 15;
-                        $month = $this->set_month['bn'][7];
-                    } else {
-                        if ($this->get_hour < 6) $date = $this->get_date - 15;
-                        else $date = $this->get_date - 14;
-                        $month = $this->set_month['bn'][8];
-                    }
-                }
-                break;
-        }
-
-        // Calculating season
-        if ($month == $this->set_month['bn'][0] || $month == $this->set_month['bn'][1])
-            $season = $this->set_season[0];
-        elseif ($month == $this->set_month['bn'][2] || $month == $this->set_month['bn'][3])
-            $season = $this->set_season[1];
-        elseif ($month == $this->set_month['bn'][4] || $month == $this->set_month['bn'][5])
-            $season = $this->set_season[2];
-        elseif ($month == $this->set_month['bn'][6] || $month == $this->set_month['bn'][7])
-            $season = $this->set_season[3];
-        elseif ($month == $this->set_month['bn'][8] || $month == $this->set_month['bn'][9])
-            $season = $this->set_season[4];
-        else
-            $season = $this->set_season[5];
+		$middate = array(13,12,14,13,14,14,15,15,15,15,14,14);
+		$numdays = array(30,30,30,30,31,31,31,31,31,30,30,30);		
+		$lipyearindex = 3;
+		
+		$date = $this->get_date - $middate[$this->get_month-1];
+		if ($this->get_hour < 6) 
+			$date -= 1;
+        
+		if (($this->get_date <= $middate[$this->get_month-1]) || ($this->get_date == $middate[$this->get_month-1]+1 && $this->get_hour < 6) ) {
+			$date += $numdays[$this->get_month-1];
+			if ($this->is_leapyear && $lipyearindex == $this->get_month) 
+				$date += 1;
+			$month = $this->set_month['bn'][($this->get_month+7)%12];
+            $season = $this->set_season[(($this->get_month+7)%12)/2];
+		}
+		else{
+			$month = $this->set_month['bn'][($this->get_month+8)%12];		
+            $season = $this->set_season[(($this->get_month+8)%12)/2];
+		}
 
         // Calculating year
-        if ($this->get_month < 4) {
-            $year = $this->get_year - 594;
-        } else {
-            if ($this->get_month == 4) {
-                if (($this->get_date < 14) || ($this->get_date == 14 && $this->get_hour < 6))
-                    $year = $this->get_year - 594;
-                else
-                    $year = $this->get_year - 593;
-            }
-            else $year = $this->get_year - 593;
-        }
-
-        // Getting ordinal suffix of date
+        $year = $this->get_year - 593;
+        if (($this->get_month < 4) || (($this->get_month == 4) && (($this->get_date < 14) || ($this->get_date == 14 && $this->get_hour < 6))))
+            $year -= 1;
+        
+		// Getting ordinal suffix of date
         $suffix = $this->suffix($date);
 
         // Converting Latin digit to Bangla

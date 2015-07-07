@@ -29,13 +29,16 @@
 if ( ! class_exists( 'Date_Widget' ) )
     require_once( plugin_dir_path( __FILE__ ) . 'classes/class-date-widget.php' );
 
+
 /**
  * Modified get_calendar function for preparing contents
  *
  * @param boolean $initial
  * @return string
  */
-function filter_get_calendar( $initial = false ) {
+if ( ! function_exists( 'bdat_get_calendar' ) ) :
+
+function bdat_get_calendar( $initial = false ) {
     global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
     $cache = array();
@@ -67,7 +70,7 @@ function filter_get_calendar( $initial = false ) {
     } elseif ( ! empty( $w ) ) {
         // We need to get the month from MySQL
         $thisyear  = ''.intval( substr( $m, 0, 4 ) );
-        $d         = ( ( $w - 1 ) * 7 ) + 6; //it seems MySQL's weeks disagree with PHP's
+        $d = ( ( $w - 1 ) * 7 ) + 6; //it seems MySQL's weeks disagree with PHP's
         $thismonth = $wpdb->get_var( "SELECT DATE_FORMAT((DATE_ADD('{$thisyear}0101', INTERVAL $d DAY) ), '%m')" );
     } elseif ( ! empty( $m ) ) {
         $thisyear = ''.intval( substr( $m, 0, 4 ) );
@@ -221,3 +224,4 @@ function filter_get_calendar( $initial = false ) {
     return $calendar_output;
 
 }
+endif;

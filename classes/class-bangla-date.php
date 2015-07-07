@@ -81,13 +81,13 @@ class Bangla_Date extends Date {
 
         $filtered = str_replace( array_keys( $data ), array_values( $data ), $content );
 
-        preg_match_all( '/(https?):\/\/[a-z\d.-]+(\/[^\'"]*)?/i', $filtered, $uris );
+        preg_match_all( '/href\=[\'"]([^"]*)[\'"]/i', $filtered, $uris );
         preg_match_all( '/[\'"]([\dp]{1,})[\'"]/u', $filtered, $qots );
 
-        $uri = str_ireplace( array_values( $data ), array_keys( $data ), $uris[0] );
+        $uri = str_ireplace( array_values( $data ), array_keys( $data ), $uris[1] );
         $qot = str_ireplace( array_values( $data ), array_keys( $data ), $qots[0] );
 
-        return str_ireplace( array_merge( $uris[0], $qots[0] ), array_merge( $uri, $qot ), $filtered );
+        return str_ireplace( array_merge( $uris[1], $qots[0] ), array_merge( $uri, $qot ), $filtered );
     }
 
     /**
@@ -98,7 +98,7 @@ class Bangla_Date extends Date {
      * @return string
      */
     public function filter_calendar() {
-        return $this->filter_content( filter_get_calendar() );
+        return $this->filter_content( bdat_get_calendar() );
     }
 
 }

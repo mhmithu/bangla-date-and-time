@@ -4,7 +4,7 @@ Plugin Site: http://mithu.me
 Tags: bangla, date, time, number, calendar, widget, bongabdo, hijri, gregorian
 Requires at least: 2.8
 Tested up to: 4.2.2
-Stable tag: 2.5
+Stable tag: 2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,12 @@ Bangla Date and Time is simple but effective to display relevant date, times on 
 
 
 == Changelog ==
+
+= v2.6 (07.07.2015) =
+* Renamed - calendar function.
+* Added - function availability check.
+* Fixed - Regex of calendar URL filter.
+* Tested - compatibility up to WP-4.2.2
 
 = v2.5 (20.05.2015) =
 * Renamed - class files.
